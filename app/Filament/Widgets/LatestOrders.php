@@ -54,6 +54,7 @@ class LatestOrders extends BaseWidget
             ])
             ->actions([
                 Tables\Actions\Action::make('open')
+                    ->label(__('dashboard.open'))
                     ->url(fn (Order $record): string => OrderResource::getUrl('edit', ['record' => $record])),
             ]);
     }
