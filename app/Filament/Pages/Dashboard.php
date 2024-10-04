@@ -20,10 +20,13 @@ class Dashboard extends BaseDashboard
                 Section::make()
                     ->schema([
                         Select::make('businessCustomersOnly')
+                            ->label(__('dashboard.business_customers_only'))
                             ->boolean(),
                         DatePicker::make('startDate')
+                            ->label(__('dashboard.start_date'))
                             ->maxDate(fn (Get $get) => $get('endDate') ?: now()),
                         DatePicker::make('endDate')
+                            ->label(__('dashboard.end_date'))
                             ->minDate(fn (Get $get) => $get('startDate') ?: now())
                             ->maxDate(now()),
                     ])

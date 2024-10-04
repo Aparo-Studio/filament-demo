@@ -6,8 +6,6 @@ use Filament\Widgets\ChartWidget;
 
 class CustomersChart extends ChartWidget
 {
-    protected static ?string $heading = 'Total customers';
-
     protected static ?int $sort = 2;
 
     protected function getType(): string
@@ -20,12 +18,30 @@ class CustomersChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Customers',
+                    'label' => __('dashboard.customers_label'),
                     'data' => [4344, 5676, 6798, 7890, 8987, 9388, 10343, 10524, 13664, 14345, 15753, 17332],
                     'fill' => 'start',
                 ],
             ],
-            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'labels' => [
+                __('months.jan'),
+                __('months.feb'),
+                __('months.mar'),
+                __('months.apr'),
+                __('months.may'),
+                __('months.jun'),
+                __('months.jul'),
+                __('months.aug'),
+                __('months.sep'),
+                __('months.oct'),
+                __('months.nov'),
+                __('months.dec'),
+            ],
         ];
+    }
+
+    public function getHeading(): ?string
+    {
+        return __('dashboard.total_customers');
     }
 }
