@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'jan' => 'Janvier',
-    'feb' => 'Février',
-    'mar' => 'Mars',
-    'apr' => 'Avril',
+    'jan' => 'Jan',
+    'feb' => 'Fév',
+    'mar' => 'Mar',
+    'apr' => 'Avr',
     'may' => 'Mai',
     'jun' => 'Juin',
-    'jul' => 'Juillet',
+    'jul' => 'Juil',
     'aug' => 'Août',
-    'sep' => 'Septembre',
-    'oct' => 'Octobre',
-    'nov' => 'Novembre',
-    'dec' => 'Décembre',
+    'sep' => 'Sep',
+    'oct' => 'Oct',
+    'nov' => 'Nov',
+    'dec' => 'Déc',
 ];
