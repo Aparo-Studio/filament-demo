@@ -64,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             ->plugin(
                 SpatieLaravelTranslatablePlugin::make()
-                    ->defaultLocales(['en', 'es', 'nl']),
+                    ->defaultLocales(['en', 'es', 'fr']),
             );
     }
 }

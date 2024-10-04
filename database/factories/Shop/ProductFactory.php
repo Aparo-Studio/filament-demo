@@ -17,9 +17,19 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
+        $fakerEn = \Faker\Factory::create('en_US');
+        $fakerFr = \Faker\Factory::create('fr_FR');
+        $fakerEs = \Faker\Factory::create('es_ES');
+
+        $nameEn = $fakerEn->unique()->catchPhrase();
+
         return [
-            'name' => $name = $this->faker->unique()->catchPhrase(),
-            'slug' => Str::slug($name),
+            'name' => [
+                'en' => $nameEn,
+                'fr' => $fakerFr->unique()->catchPhrase(),
+                'es' => $fakerEs->unique()->catchPhrase(),
+            ],
+            'slug' => Str::slug($nameEn),
             'sku' => $this->faker->unique()->ean8(),
             'barcode' => $this->faker->ean13(),
             'description' => $this->faker->realText(),
