@@ -10,11 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Translatable\HasTranslations;
 
 class Product extends Model implements HasMedia
 {
+    use HasTranslations;
     use HasFactory;
     use InteractsWithMedia;
+
+    public $translatable = ['name'];
 
     /**
      * @var string
