@@ -21,4 +21,6 @@ return [
     'total_price' => 'Total Price',
     'shipping_cost' => 'Shipping Cost',
     'open' => 'Open',
+
+    'Products' => 'Products',
 ];

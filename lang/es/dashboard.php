@@ -21,4 +21,6 @@ return [
     'total_price' => 'Precio total',
     'shipping_cost' => 'Costo de envío',
     'open' => 'Abrir',
+
+    'Products' => 'Productos',
 ];

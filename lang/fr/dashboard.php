@@ -21,4 +21,5 @@ return [
     'total_price' => 'Prix total',
     'shipping_cost' => 'Frais de port',
     'open' => 'Ouvrir',
+
 ];
