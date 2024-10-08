@@ -25,6 +25,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Permission;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class DatabaseSeeder extends Seeder
@@ -39,8 +40,8 @@ class DatabaseSeeder extends Seeder
         // Admin
         $this->command->warn(PHP_EOL . 'Creating admin user...');
         $user = $this->withProgressBar(1, fn () => User::factory(1)->create([
-            'name' => 'Demo User',
-            'email' => 'admin@filamentphp.com',
+            'name' => 'Tom Jamon',
+            'email' => 'tom.jamon@aparo.studio',
         ]));
         $this->command->info('Admin user created.');
 
@@ -127,6 +128,24 @@ class DatabaseSeeder extends Seeder
             ->count(20)
             ->create());
         $this->command->info('Blog links created.');
+
+        $permissions = [
+            'DEMO_INDEX_USER', 'DEMO_CREATE_USER', 'DEMO_DELETE_ANY_USER', 'DEMO_ROLES_INDEX',
+            'DEMO_REORDER_USER', 'DEMO_VIEW_ANY_USER', 'DEMO_FORCE_DELETE_ANY_USER',
+            'DEMO_VIEW_USER', 'DEMO_UPDATE_USER', 'DEMO_RESTORE_ANY_USER', 'DEMO_FORCE_DELETE_USER',
+            'DEMO_ROLES_CREATE', 'DEMO_DELETE_USER', 'DEMO_ROLES_EDIT', 'DEMO_RESTORE_USER',
+            'DEMO_REPLICATE_USER'
+        ];
+
+        \Illuminate\Support\Facades\Artisan::call('cache:forget', ['key' => 'spatie.permission.cache']);
+
+        foreach ($permissions as $permission) {
+            // create permisison
+            $permission = Permission::create(['name' => $permission]);
+            foreach($user as $u) {
+                $u->givePermissionTo($permission);
+            }
+        }
     }
 
     protected function withProgressBar(int $amount, Closure $createCollectionOfOne): Collection
